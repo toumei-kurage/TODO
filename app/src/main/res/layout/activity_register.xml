@@ -1,34 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <EditText
-        android:id="@+id/emailEditText"
+        android:id="@+id/editTextUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:hint="Email" />
+        android:hint="ユーザー名" />
 
     <EditText
-        android:id="@+id/passwordEditText"
+        android:id="@+id/editTextEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Password"
+        android:hint="メールアドレス"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="パスワード"
         android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/loginButton"
+        android:id="@+id/buttonRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Log In" />
-
-    <Button
-        android:id="@+id/SignUpButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Sign up" />
+        android:text="登録" />
 </LinearLayout>

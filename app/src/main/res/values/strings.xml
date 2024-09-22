@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">TODO</string>
+    <string name="error_empty">入力必須です</string>
+    <string name="error_digit_6">6桁以上で入力して下さい</string>
+    <string name="error_email">正しいメールアドレス形式で入力してください</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_email">Email</string>
 </resources>

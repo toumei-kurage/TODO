@@ -57,15 +57,13 @@ class LoginActivity : AppCompatActivity() {
             clearBordFocus()
             //すべての入力項目のバリデーションチェック
             val (resutlEmail: Boolean, emailMsg: String) = validate.emailCheck(emailEditText)
-            if (!resutlEmail) {
-                emailError.error = emailMsg
-                return@setOnClickListener
-            }
             val (resultPassword: Boolean, passwordMsg) = validate.passwordCheck(passwordEditText)
-            if (!resultPassword) {
+            if (!(resutlEmail && resultPassword)) {
+                emailError.error = emailMsg
                 passwordError.error = passwordMsg
                 return@setOnClickListener
             }
+
             val email = emailEditText.text.toString()
             val password = passwordEditText.text.toString()
             login(email, password)

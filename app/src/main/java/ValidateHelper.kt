@@ -25,7 +25,6 @@ class ValidateHelper(private val context: Context) {
 
     /**
      * 電子メールのバリデーションチェック
-     * 未入力チェックと電子メールの形式チェック
      */
     fun emailCheck(editTextEmail:EditText):Pair<Boolean,String>{
         val email = editTextEmail.text.toString()
@@ -35,7 +34,7 @@ class ValidateHelper(private val context: Context) {
         if(!emailFormatCheck(email)){
             return Pair(false,context.getString(R.string.error_email))
         }
-        return Pair(true,"OK")
+        return Pair(true,"")
     }
 
     /**
@@ -49,7 +48,18 @@ class ValidateHelper(private val context: Context) {
         if(!lengthCheck(password,6)){
             return Pair(false,context.getString(R.string.error_digit_6))
         }
-        return Pair(true,"OK")
+        return Pair(true,"")
+    }
+
+    /**
+     * ユーザー名のバリデーションチェック
+     */
+    fun usernameCheck(editTextUsername:EditText):Pair<Boolean,String>{
+        val username = editTextUsername.text.toString()
+        if(!emptyCheck(username)){
+            return Pair(false,context.getString(R.string.error_empty))
+        }
+        return Pair(true,"")
     }
 
 }

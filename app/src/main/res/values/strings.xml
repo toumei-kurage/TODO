@@ -5,4 +5,8 @@
     <string name="error_email">正しいメールアドレス形式で入力してください</string>
     <string name="hint_password">Password</string>
     <string name="hint_email">Email</string>
+    <string name="button_login">Log In</string>
+    <string name="button_signup">Sign up</string>
+    <string name="hint_username">user name</string>
+    <string name="button_register">register</string>
 </resources>

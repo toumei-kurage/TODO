@@ -2,6 +2,7 @@ package com.websarva.wings.android.todo
 
 import ValidateHelper
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
@@ -9,6 +10,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
@@ -23,8 +25,15 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        // アクションバーに戻るボタンを表示
+        // ToolbarをActionBarとして設定
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        toolbar.setTitle(R.string.register_name)
+        toolbar.setTitleTextColor(Color.WHITE)
+        setSupportActionBar(toolbar)
+
+        // ActionBarに戻るボタンを有効化
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic__arrow_back)
 
         // FirebaseAuthのインスタンスを取得
         auth = FirebaseAuth.getInstance()
@@ -111,14 +120,13 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    //戻るボタンを押したときの処理
+    // 戻るアイコンがタップされた時の処理
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
-                // LoginActivityに遷移するIntentを作成
+                // LoginActivityに遷移する処理
                 val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
-                finish() // 現在のアクティビティを終了する場合
                 true
             }
             else -> super.onOptionsItemSelected(item)

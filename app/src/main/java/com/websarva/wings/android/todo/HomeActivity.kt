@@ -2,37 +2,41 @@ package com.websarva.wings.android.todo
 
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Color
 import android.os.Bundle
 import android.view.Menu
-import android.view.MenuItem
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.appcompat.widget.Toolbar
+
 
 class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-    }
+        // Toolbarを設定
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        toolbar.setTitle(R.string.login_name)
+        toolbar.setTitleTextColor(Color.WHITE)
+        setSupportActionBar(toolbar)
 
-    // メニューを作成するメソッド
+        // アイコンのクリックリスナーを設定
+        toolbar.setNavigationIcon(null) // 戻るボタンを非表示にする
+        toolbar.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.action_logout -> {
+                    logout()
+                    true
+                }
+
+                else -> false
+            }
+        }
+    }
+    // メニューをインフレートする
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_home, menu)
         return true
-    }
-
-    // メニューアイテムが選択されたときの処理
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.action_logout -> {
-                // ログアウト処理を呼び出す
-                logout()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
     }
 
     private fun logout() {

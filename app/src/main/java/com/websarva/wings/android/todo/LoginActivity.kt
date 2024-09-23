@@ -2,6 +2,7 @@ package com.websarva.wings.android.todo
 
 import ValidateHelper
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -11,6 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
+import androidx.appcompat.widget.Toolbar
 
 class LoginActivity : AppCompatActivity() {
 
@@ -20,6 +22,12 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        //Toolbar取得
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        toolbar.setTitle(R.string.login_name)
+        toolbar.setTitleTextColor(Color.WHITE)
+        setSupportActionBar(toolbar)
         val emailError = findViewById<TextInputLayout>(R.id.email)
         val emailEditText: EditText = findViewById(R.id.emailEditText)
         val passwordError = findViewById<TextInputLayout>(R.id.password)

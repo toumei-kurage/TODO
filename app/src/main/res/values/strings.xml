@@ -7,6 +7,9 @@
     <string name="hint_email">Email</string>
     <string name="button_login">Log In</string>
     <string name="button_signup">Sign up</string>
+    <string name="button_register">Register</string>
     <string name="hint_username">user name</string>
-    <string name="button_register">register</string>
+    <string name="register_name">ユーザー登録</string>
+    <string name="logout_name">ログアウト</string>
+    <string name="login_name">ログイン</string>
 </resources>

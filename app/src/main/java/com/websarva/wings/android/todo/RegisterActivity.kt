@@ -3,6 +3,7 @@ package com.websarva.wings.android.todo
 import ValidateHelper
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
@@ -21,6 +22,9 @@ class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
+
+        // アクションバーに戻るボタンを表示
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         // FirebaseAuthのインスタンスを取得
         auth = FirebaseAuth.getInstance()
@@ -106,6 +110,21 @@ class RegisterActivity : AppCompatActivity() {
                 }
         }
     }
+
+    //戻るボタンを押したときの処理
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                // LoginActivityに遷移するIntentを作成
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+                finish() // 現在のアクティビティを終了する場合
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
 
     private fun clearBordFocus(){
         val usernameEditText = findViewById<EditText>(R.id.editTextUsername)

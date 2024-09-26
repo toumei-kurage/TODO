@@ -16,7 +16,7 @@ class HomeActivity : AppCompatActivity() {
 
         // Toolbarを設定
         val toolbar: Toolbar = findViewById(R.id.toolbar)
-        toolbar.setTitle(R.string.login_name)
+        toolbar.setTitle(R.string.title_home)
         toolbar.setTitleTextColor(Color.WHITE)
         setSupportActionBar(toolbar)
 

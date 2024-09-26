@@ -24,7 +24,7 @@
         app:errorEnabled="true">
 
         <EditText
-            android:id="@+id/editTextUsername"
+            android:id="@+id/usernameEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
@@ -44,7 +44,7 @@
         app:errorEnabled="true">
 
         <EditText
-            android:id="@+id/editTextEmail"
+            android:id="@+id/emailEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/hint_email"
@@ -63,7 +63,7 @@
         app:errorEnabled="true">
 
         <EditText
-            android:id="@+id/editTextPassword"
+            android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/hint_password"

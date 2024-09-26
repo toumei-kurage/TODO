@@ -33,24 +33,24 @@ class RegisterActivity : AppCompatActivity() {
 
         // ActionBarに戻るボタンを有効化
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic__arrow_back)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_back)
 
         // FirebaseAuthのインスタンスを取得
         auth = FirebaseAuth.getInstance()
 
         // UIの要素を取得
-        val editTextUsername = findViewById<EditText>(R.id.editTextUsername)
-        val editTextEmail = findViewById<EditText>(R.id.editTextEmail)
-        val editTextPassword = findViewById<EditText>(R.id.editTextPassword)
+        val usernameEditText = findViewById<EditText>(R.id.usernameEditText)
+        val emailEditText = findViewById<EditText>(R.id.emailEditText)
+        val passwordEditText = findViewById<EditText>(R.id.passwordEditText)
         val buttonRegister = findViewById<Button>(R.id.buttonRegister)
         val usernameError = findViewById<TextInputLayout>(R.id.username)
         val emailError = findViewById<TextInputLayout>(R.id.email)
         val passwordError = findViewById<TextInputLayout>(R.id.password)
 
-        editTextUsername.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
+        usernameEditText.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
             if (!hasFocus) {
                 // フォーカスが外れたときの処理
-                val (result: Boolean, errorMsg: String) = validate.usernameCheck(editTextUsername)
+                val (result: Boolean, errorMsg: String) = validate.usernameCheck(usernameEditText)
                 if (!result) {
                     usernameError.error = errorMsg
                     return@OnFocusChangeListener
@@ -59,10 +59,10 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
 
-        editTextEmail.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
+        emailEditText.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
             if (!hasFocus) {
                 // フォーカスが外れたときの処理
-                val (result: Boolean, errorMsg: String) = validate.emailCheck(editTextEmail)
+                val (result: Boolean, errorMsg: String) = validate.emailCheck(emailEditText)
                 if (!result) {
                     emailError.error = errorMsg
                     return@OnFocusChangeListener
@@ -71,10 +71,10 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
 
-        editTextPassword.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
+        passwordEditText.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
             if (!hasFocus) {
                 // フォーカスが外れたときの処理
-                val (result: Boolean, errorMsg: String) = validate.passwordCheck(editTextPassword)
+                val (result: Boolean, errorMsg: String) = validate.passwordCheck(passwordEditText)
                 if (!result) {
                     passwordError.error = errorMsg
                     return@OnFocusChangeListener
@@ -87,9 +87,9 @@ class RegisterActivity : AppCompatActivity() {
         buttonRegister.setOnClickListener {
             clearBordFocus()
             //すべての入力項目のバリデーションチェック
-            val (resultUsername:Boolean,usernameMsg:String) = validate.usernameCheck(editTextUsername)
-            val (resultEmail: Boolean, emailMsg: String) = validate.emailCheck(editTextEmail)
-            val (resultPassword: Boolean, passwordMsg) = validate.passwordCheck(editTextPassword)
+            val (resultUsername:Boolean,usernameMsg:String) = validate.usernameCheck(usernameEditText)
+            val (resultEmail: Boolean, emailMsg: String) = validate.emailCheck(emailEditText)
+            val (resultPassword: Boolean, passwordMsg) = validate.passwordCheck(passwordEditText)
 
             if(!(resultUsername && resultEmail && resultPassword)){
                 usernameError.error = usernameMsg
@@ -98,8 +98,8 @@ class RegisterActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val email = editTextEmail.text.toString().trim()
-            val password = editTextPassword.text.toString().trim()
+            val email = emailEditText.text.toString().trim()
+            val password = passwordEditText.text.toString().trim()
 
             // Firebaseでユーザー登録
             auth.createUserWithEmailAndPassword(email, password)
@@ -135,9 +135,9 @@ class RegisterActivity : AppCompatActivity() {
 
 
     private fun clearBordFocus(){
-        val usernameEditText = findViewById<EditText>(R.id.editTextUsername)
-        val emailEditText = findViewById<EditText>(R.id.editTextEmail)
-        val passwordEditText = findViewById<EditText>(R.id.editTextPassword)
+        val usernameEditText = findViewById<EditText>(R.id.usernameEditText)
+        val emailEditText = findViewById<EditText>(R.id.emailEditText)
+        val passwordEditText = findViewById<EditText>(R.id.passwordEditText)
         // キーボードを閉じる処理
         val inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(usernameEditText.windowToken,0)
